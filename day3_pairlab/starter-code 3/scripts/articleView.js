@@ -38,6 +38,7 @@ articleView.handleAuthorFilter = function() {
       $('article').each(function(element) {
         $(this).hide();
       });
+
       $('article').each(function(element){
         if ($(this).attr('data-author') == $filterVal) {
           $(this).show();
@@ -50,7 +51,7 @@ articleView.handleAuthorFilter = function() {
         $(this).show();
       });
     };
-    
+
     $('#category-filter').val('');
   });
 };
