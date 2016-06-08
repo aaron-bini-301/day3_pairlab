@@ -18,6 +18,7 @@ articleView.populateFilters = function() {
       //       Avoid duplicates! We don't want to append the category name if the select
       //       already has this category as an option!
       val = $(this).attr('data-category');
+      console.log(val);
       optionTag = '<option value="' + val + '">' + val + '</option>';
       if ($('#category-filter option[value="' + val + '"]').length === 0) {
         $('#category-filter').append(optionTag);
@@ -32,7 +33,12 @@ articleView.handleAuthorFilter = function() {
       // TODO: If the select box was changed to an option that has a value, we need to hide all the articles,
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
-
+      $('article').each(function(element) {
+        $(this).hide();
+      });
+      $('article').each(function(element){
+        $(this).attr('');
+      });
     } else {
       // TODO: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
@@ -73,4 +79,7 @@ articleView.setTeasers = function() {
 };
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
-$();
+$(function() {
+  articleView.populateFilters();
+  articleView.handleAuthorFilter();
+});
