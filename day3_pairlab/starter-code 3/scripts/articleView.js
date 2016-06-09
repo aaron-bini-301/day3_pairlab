@@ -41,14 +41,14 @@ articleView.handleAuthorFilter = function() {
 
       $('article').each(function(element){
         if ($(this).attr('data-author') == $filterVal) {
-          $(this).show();
+          $(this).fadeIn();
         }
       });
     } else {
       // DONE: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
       $('article').each(function(element){
-        $(this).show();
+        $(this).fadeIn();
       });
     };
 
@@ -75,14 +75,14 @@ articleView.handleCategoryFilter = function() {
 
       $('article').each(function(element){
         if ($(this).attr('data-category') == $filterVal2) {
-          $(this).show();
+          $(this).fadeIn();
         }
       });
     } else {
       // DONE: If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
       $('article').each(function(element){
-        $(this).show();
+        $(this).fadeIn(500);
       });
     };
 
@@ -96,19 +96,19 @@ articleView.handleMainNav = function() {
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
   //       data available to you on the .tab element that was clicked.
-  // $('.main-nav').on('click', function(){
+  //$('.main-nav').on('click', '.tab', function(){
   $('.tab').on('click', function(){
     $('.tab-content').hide();
   });
-  // });
+  //});
 
   $('.main-nav ul li:nth-child(2)').click(function(){
 
-    $('#about').show();
+    $('#about').fadeIn(1000);
   });
 
   $('.main-nav .tab:first').click(function(){
-    $('#articles').show();
+    $('#articles').fadeIn(1000);
   }); // Let's now trigger a click on the first .tab element, to set up the page.
 };
 
@@ -118,11 +118,12 @@ articleView.setTeasers = function() {
   // DONE: Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
-  //       Ideally, we'd attach this as just 1 event handler on the #articles section, and let it
-  //       process any .read-on clicks that happen within child nodes.
+  //       Ideally, we'd attach this as just 1 event handler on the #articles section, and let iter
   $('.read-on').on('click', function(){
+    event.preventDefault();
     console.log($(this).prev());
     $(this).prev().children().show();
+    $(this).fadeOut();
   });
 
 };
